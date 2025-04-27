@@ -27,4 +27,14 @@ ttk.Label(mainframe, text= "meters").grid(column=3, row=2, sticky=(W))
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5, pady=5)
     
+def calculate(*args):
+    try:
+        value = float(feet.get())
+        meters.set(int(0.3048 * value * 10000.0 + 0.5)/10000.0)
+    except ValueError:
+        pass
 
+
+feet_entry.focus()
+root.bind("<Return>", calculate)
+root.mainloop()
